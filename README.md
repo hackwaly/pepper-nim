@@ -1,6 +1,10 @@
 Play PNacl with Nim lang
 ========================
 
+Why port nim to Chrome's native client?
+---------------------------------------
+Because I would NOT like to use C++ for native programming. And nim can compile to C. More than just for fun.
+
 How to taste it
 ---------------
 
