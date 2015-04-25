@@ -25,7 +25,7 @@ make
 ```
 
 Then load unpacked extension with `pepper-nim` folder in `chrome://extensions/` developer mode.
-Inspect the background page of `pepper-nim` then see what's console dumps.
+Inspect the background page of `pepper-nim` then see what's console dumps. "hello" should be printed.
 
 Todos
 -----
