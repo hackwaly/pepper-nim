@@ -1,0 +1,12 @@
+{
+  "name": "pepper-nim",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "pepper nim integrated",
+  "offline_enabled": true,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  }
+}

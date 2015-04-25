@@ -1,0 +1,71 @@
+--- out/nimcache/system.c	2015-04-26 05:34:02.000000000 +0800
++++ tools/system-fixed.c	2015-04-26 05:33:27.000000000 +0800
+@@ -16,7 +16,7 @@
+ 
+ #include <signal.h>
+ 
+-#include <dlfcn.h>
++// #include <dlfcn.h>
+ typedef struct Exception Exception;
+ typedef struct NimStringDesc NimStringDesc;
+ typedef struct TGenericSeq TGenericSeq;
+@@ -1606,7 +1606,7 @@
+ 	nimfr("osAllocPages", "alloc.nim")
+ 	result = 0;
+ 	nimln(44, "alloc.nim");
+-	result = mmap(NIM_NIL, size, ((int) 3), ((NI32) 4098), ((int) -1), 0);
++	result = malloc(size); //mmap(NIM_NIL, size, ((int) 3), MAP_ANONYMOUS, ((int) -1), 0);
+ 	nimln(46, "alloc.nim");
+ 	{
+ 		NIM_BOOL LOC3;
+@@ -7486,28 +7486,28 @@
+ 	exit(1);
+ }
+ 
+-N_NIMCALL(void, nimUnloadLibrary)(void* lib) {
+-	dlclose(lib);
+-}
+-
+-N_NIMCALL(void*, nimLoadLibrary)(NimStringDesc* path) {
+-	void* result;
+-	result = 0;
+-	result = dlopen(path->data, RTLD_NOW);
+-	return result;
+-}
+-
+-N_NIMCALL(void*, nimGetProcAddr)(void* lib, NCSTRING name) {
+-	void* result;
+-	result = 0;
+-	result = dlsym(lib, name);
+-	{
+-		if (!(result == NIM_NIL)) goto LA3;
+-		procaddrerror_25015(name);
+-	}
+-	LA3: ;
+-	return result;
+-}
++// N_NIMCALL(void, nimUnloadLibrary)(void* lib) {
++// 	dlclose(lib);
++// }
++
++// N_NIMCALL(void*, nimLoadLibrary)(NimStringDesc* path) {
++// 	void* result;
++// 	result = 0;
++// 	result = dlopen(path->data, RTLD_NOW);
++// 	return result;
++// }
++
++// N_NIMCALL(void*, nimGetProcAddr)(void* lib, NCSTRING name) {
++// 	void* result;
++// 	result = 0;
++// 	result = dlsym(lib, name);
++// 	{
++// 		if (!(result == NIM_NIL)) goto LA3;
++// 		procaddrerror_25015(name);
++// 	}
++// 	LA3: ;
++// 	return result;
++// }
+ 
+ N_NIMCALL(NI, countBits32)(NI32 n) {
+ 	NI result;
