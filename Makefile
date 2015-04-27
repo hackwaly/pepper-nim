@@ -26,7 +26,7 @@ out:
 	mkdir -p out
 
 out/$(TARGET).bc: out/nimcache
-	$(CXX) $(CFLAGS) out/nimcache/system.c out/nimcache/main.c tools/module.c -o $@
+	$(CXX) $(CFLAGS) $(wildcard $</*.c) tools/module.c -o $@
 
 out/nimcache: out
 	nim c -c --nimcache:$(shell pwd)/out/nimcache --cpu:i386 src/main.nim
